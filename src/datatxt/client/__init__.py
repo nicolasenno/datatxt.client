@@ -53,6 +53,7 @@ class Datatxt(object):
     def annotate(self, text, properties=True, wikilinks=False, rho=None):
         """ return a dictionary out of json
         """
+        import pdb;pdb.set_trace()
         params = dict(self.params)
         params['text'] = text
         if rho:
