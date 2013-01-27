@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="datdatxt.client">
+
+    <genericsetup:registerProfile
+    	name="default"
+      	title="Datatxt web wemantic plugin"
+      	directory="profiles/default"
+      	description="Web Semantic plugin for datatxt service provider"
+      	provides="Products.GenericSetup.interfaces.EXTENSION"
+      	/>
+  
+</configure>
