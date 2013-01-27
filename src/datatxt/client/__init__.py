@@ -1,10 +1,21 @@
 #!/usr/bin/env python
 # encoding=utf8
+from logging import getLogger
 from requests import get
-
-import sparql
+from zope.i18nmessageid import MessageFactory
+from zope.interface import Interface
 import collections
+import sparql
 
+DatatxtMessageFactory = MessageFactory(u'datatxt.client')
+logger = getLogger('datatxt.client')
+
+
+class Layer(Interface):
+    """Layer Marker"""
+
+def initialize(context):
+    """Initializer called when used as a Zope 2 product."""
 
 class Datatxt():
     """
@@ -39,6 +50,10 @@ class Datatxt():
         self.service = sparql.Service(endpoint)
         self.prefix = prefix
 
+    @property
+    def settings_interface(self):
+        return "datatxt.client.interfaces.IDatatxtSettings"
+    
     def tags(self, text):
         """ return a list of tags
         """
@@ -48,3 +63,4 @@ class Datatxt():
         if res.status_code == 200:
             result = res.json()
             return [annotation['title'] for annotation in result['annotations']]
+
