@@ -8,12 +8,14 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
+	<include package="Products.CMFPlone" />
     <include file="profiles.zcml" />
     <includeDependencies package="." />
     
 	<adapter
        	name="datatxt-plugin"
-       	provides="collective.websematic.base.interfaces.IWebSemanticPlugin"
+       	for="*"
+       	provides="collective.websemantic.base.interfaces.IWebSemanticPlugin"
 		factory="datatxt.client.Datatxt"
        />
 
