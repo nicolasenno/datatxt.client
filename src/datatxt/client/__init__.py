@@ -53,7 +53,7 @@ class Datatxt():
     @property
     def settings_interface(self):
         return "datatxt.client.interfaces.IDatatxtSettings"
-    
+
     def tags(self, text):
         """ return a list of tags
         """
