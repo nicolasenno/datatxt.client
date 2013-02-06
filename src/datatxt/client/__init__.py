@@ -1,21 +1,29 @@
-#!/usr/bin/env python
-# encoding=utf8
+# -*- coding: utf8 -*-
 from logging import getLogger
 from requests import get
 from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
 import collections
 import sparql
-
+from z3c.form import group, field
+ 
 DatatxtMessageFactory = MessageFactory(u'datatxt.client')
 logger = getLogger('datatxt.client')
+
+from datatxt.client.interfaces.settings import IDatatxtSettings
+
+def initialize(context):
+    """Initializer called when used as a Zope 2 product."""
+
+
+class FormDatatxtSettings(group.Group):
+    label="DataTxt settings"
+    fields=field.Fields(IDatatxtSettings)
 
 
 class Layer(Interface):
     """Layer Marker"""
 
-def initialize(context):
-    """Initializer called when used as a Zope 2 product."""
 
 class Datatxt():
     """
@@ -50,9 +58,8 @@ class Datatxt():
         self.service = sparql.Service(endpoint)
         self.prefix = prefix
 
-    @property
-    def settings_interface(self):
-        return "datatxt.client.interfaces.IDatatxtSettings"
+    def settingsClassForm(self):
+        return FormDatatxtSettings
 
     def tags(self, text):
         """ return a list of tags

@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.9.0'
+version = '0.1.0'
 shortdesc = "python interface for SpazioDati's dataTXT and DBpedia"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 tests_require = ['interlude']
@@ -32,11 +32,16 @@ setup(name='datatxt.client',
       license='Python Software Foundation License',
       packages=find_packages('src'),
       package_dir = {'': 'src'},
-      namespace_packages=[],
+      namespace_packages=['datatxt'],
       include_package_data=True,
       zip_safe=True,
       install_requires=[
             'sparql-client >= 0.13',
             'requests >= 0.11'
       ],
+      entry_points="""
+      # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
+      """,
 )

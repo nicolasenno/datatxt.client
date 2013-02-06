@@ -1,7 +1,6 @@
-from datatxt.client import WebsemanticBaseMessageFactory as _
+from datatxt.client import DatatxtMessageFactory as _
 from zope.interface import Interface
 from zope.schema import TextLine
-
 
 class IDatatxtSettings(Interface):
     """
@@ -48,7 +47,7 @@ class IDatatxtSettings(Interface):
         default=u'0.1',
     )
     epsilon = TextLine (
-        title=u'Datatxt epsilon',
+        title=u'Datatxt epsilonIDatatxtSettings',
         description=_('help_datatxt_epsilon',
             default=u'Please enter epsilon'
         ),
