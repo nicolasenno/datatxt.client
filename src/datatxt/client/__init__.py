@@ -6,7 +6,7 @@ from zope.interface import Interface
 import collections
 import sparql
 from z3c.form import group, field
- 
+
 DatatxtMessageFactory = MessageFactory(u'datatxt.client')
 logger = getLogger('datatxt.client')
 
@@ -17,8 +17,8 @@ def initialize(context):
 
 
 class FormDatatxtSettings(group.Group):
-    label="DataTxt settings"
-    fields=field.Fields(IDatatxtSettings)
+    label = "DataTxt settings"
+    fields = field.Fields(IDatatxtSettings)
 
 
 class Layer(Interface):
@@ -31,7 +31,8 @@ class Datatxt():
     defaults globals listed above
     documentation here: https://spaziodati.3scale.net/getting-started
     """
-    def __init__(self, app_key,
+
+    def setParams(self, app_key,
                  app_id,
                  lang,
                  api_url,
@@ -58,6 +59,7 @@ class Datatxt():
         self.service = sparql.Service(endpoint)
         self.prefix = prefix
 
+    @property
     def settingsClassForm(self):
         return FormDatatxtSettings
 
